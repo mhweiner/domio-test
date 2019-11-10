@@ -1,0 +1,26 @@
+{
+  "name": "domio",
+  "version": "1.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mhweiner/domio.git"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "NODE_ENV=development node -r esm lib/server.js",
+    "poll": "NODE_ENV=development ROARR_LOG=true node -r esm lib/check.js --poll 2  | roarr pretty-print",
+    "clean": "NODE_ENV=development ROARR_LOG=true node -r esm lib/check.js --clean | roarr pretty-print"
+  },
+  "dependencies": {
+    "@roarr/cli": "^2.0.1",
+    "command-line-args": "^5.1.1",
+    "esm": "^3.1.0",
+    "express": "^4.16.4",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0",
+    "roarr": "^2.14.4",
+    "serialize-error": "^5.0.0",
+    "sqlite3": "^4.1.0"
+  }
+}
