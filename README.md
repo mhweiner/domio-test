@@ -12,7 +12,7 @@ My approach was to build a simple node script that could be run via command line
 
 ### Persistance
 
-The script maintains its own data layer persistance via SQLite. The database is a single file created by SQLite (property_price_events.sqlite3). There is a `--clean` flag that you can utilze with this script that will empty the database to start fresh (see usage below). Obviously, since this file only persists with this individual process, its usefulness is limited to its own runtime (among other limitations). In other words, the database won't know what happened before this script is run, and when the process ends, the database might get out of date quickly. Obviously scaling would also be an issue (see Areas for Improvement below).
+The script maintains its own data layer persistance via SQLite. The database is a single file created by SQLite (property_price_events.sqlite3). There is a `--clean` flag that you can utilze with this script that will empty the database to start fresh (see usage below). Obviously scaling would be an issue (see Areas for Improvement below).
 
 ### Rules
 
@@ -36,7 +36,7 @@ I did not have time to write any tests. Welp! I'm a big fan of BDD (Behavior Dri
 
 I'd also utilize integration tests and contract tests (check external dependencies for change in API, etc).
 
-### Performance
+### Performance & Data Persistence
 
 There is plenty of room for improvement in terms of performance. For example, I could probably write a much more efficient SQL query that only runs once instead of for every property, every time. Since my database attempts to track ALL price changes over time (assuming this could be useful as an API for metrics, etc), combining all the queries into one became non-trivial and I just didn't have the time to come up with the proper compound query.
 
