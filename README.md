@@ -12,7 +12,7 @@ My approach was to build a simple node script that could be run via command line
 
 ### Persistance
 
-The script maintains its own data layer persistance via SQLite. The database is a single file created by SQLite (property_price_events.sqlite3). There is a `--clean` flag that you can utilze with this script that will empty the database to start fresh (see usage below). Obviously scaling would be an issue (see Areas for Improvement below).
+The script maintains its own data layer persistance via SQLite. The database is a single file created by SQLite (property_price_events.sqlite3). There is a `--clean` flag that you can utilze with this script that will empty the database to start fresh (see usage below).
 
 ### Rules
 
@@ -40,7 +40,7 @@ I'd also utilize integration tests and contract tests (check external dependenci
 
 There is plenty of room for improvement in terms of performance. For example, I could probably write a much more efficient SQL query that only runs once instead of for every property, every time. Since my database attempts to track ALL price changes over time (assuming this could be useful as an API for metrics, etc), combining all the queries into one became non-trivial and I just didn't have the time to come up with the proper compound query.
 
-In fact, it would make much more sense for the persistence to be a proper cloud-based RDBMS service such as Amazon RDS. This way the database could be shared by multiple processes as we scale up, and the database wouldn't be so tightly coupled to this service. Spin up for these processes would also be much faster, and they wouldn't have to each first re-create the same database.
+In fact, it would make much more sense for the persistence to be a proper cloud-based RDBMS service such as Amazon RDS. This way the database could be shared by multiple containers/machines as we scale up, and the database wouldn't be so tightly coupled to this service. We also wouldn't have as many issues with the database becoming a bottleneck.
 
 Of course, to begin with, the entire premise of polling the `propertites` service is highly inefficient. A better approach would be a "pub-sub" model where this service itself subscribes to changes in price, and then we can handle each of these events as they come, passing off the grunt-work of checking against the rules to a worker pool which can be scaled dynamically depending on workload and performance metrics.
 
