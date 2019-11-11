@@ -22,6 +22,10 @@ I implemented the two rules described in Part 2, but also considered a little ab
 
 So, I couldn't quite figure out how to properly demonstrate an email being sent in this take home exam format. It's not like I know where to send this fictional email, and how anyone evaluating this assignment will see it. Also, for all of the free email API services that I'm aware of (Sendgrid, Mailgun, etc), you need an account and a domain name or something. That all seemed like a futile effort, so I just faked it and used a logger to show the email being sent. Sorry :-/
 
+### Failures and Logging
+
+I am using `roarr`, a simple JSON logging utility. Since this service will output JSON to `STDOUT`, it can be caught and sent to a store somewhere for catching server errors or later recall for debugging, analysis, etc. I'm using ES6 Promises and liberal usage of catch() blocks to try to catch errors before they snowball and to give useful error logs with stack traces.
+
 ## Areas for improvement
 
 Obviously being limited to only 3 hours or so means I couldn't do everything I would do if this were going to actual production. Here are just a few of the areas for improvement:
@@ -39,6 +43,10 @@ There is plenty of room for improvement in terms of performance. For example, I 
 In fact, it would make much more sense for the persistence to be a proper cloud-based RDBMS service such as Amazon RDS. This way the database could be shared by multiple processes as we scale up, and the database wouldn't be so tightly coupled to this service. Spin up for these processes would also be much faster, and they wouldn't have to each first re-create the same database.
 
 Of course, to begin with, the entire premise of polling the `propertites` service is highly inefficient. A better approach would be a "pub-sub" model where this service itself subscribes to changes in price, and then we can handle each of these events as they come, passing off the grunt-work of checking against the rules to a worker pool which can be scaled dynamically depending on workload and performance metrics.
+
+### Failures
+
+I could see this service being broken down into seperate services, each service would be responsible for tracking its own tasks and re-attempting failed tasks a few times before giving up, and then raising any concerns to the authorities (on call tech staff, etc). If each "rule" was being handled by a subscriber service, then that service would be responsible for sending emails, SMS, etc. The question of what exactly to do in case of failure would depend on the business requirements and resources allocated to recovery/remedy systems.
 
 ### Rules
 
