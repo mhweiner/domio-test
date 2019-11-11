@@ -24,7 +24,7 @@ So, I couldn't quite figure out how to properly demonstrate an email being sent 
 
 ## Areas for improvement
 
-Obviously having only 3 or so hours means I couldn't do everything I would if this were going to actual production. Here are just a few of the low hanging fruit:
+Obviously being limited to only 3 hours or so means I couldn't do everything I would do if this were going to actual production. Here are just a few of the areas for improvement:
 
 ### Testing
 
