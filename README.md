@@ -1,6 +1,8 @@
-# Daily Harvest Coding Test
+# Domio Take Home Challenge
 
-This is my solution for the coding test assignment for a Software Engineer role at Daily Harvest. The assignment was to write a program that would return a list of matching inventory that contain a given ingredient.
+This is my solution for the take home coding challenge for Domio. The assignment was to create a service that would:
+  - Track price changes of properties (inventory) over time
+  - Take certain actions given a set of rules/triggers when these price changes occur
 
 ## My approach
 
