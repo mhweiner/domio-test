@@ -28,7 +28,7 @@ Obviously being limited to only 3 hours or so means I couldn't do everything I w
 
 ### Testing
 
-I did not have time to write any tests. Welp! I'm a big fan of BDD (Behavior Driven Development) where I unit test module's public methods and try to avoid writing brittle implementation-specific tests. I usually recommend 100% branch coverage with unit tests. I'd like use Istanbul to determine branch coverage, Mocha for tests, and JSLint for linting.
+I did not have time to write any tests. Welp! I'm a big fan of BDD (Behavior Driven Development) where module's public methods are tested, with the goal of avoiding brittle implementation-specific tests. I usually recommend 100% branch coverage with unit tests. I'd like use Istanbul to determine branch coverage, Mocha for tests, and JSLint for linting.
 
 I'd also utilize integration tests and contract tests (check external dependencies for change in API, etc).
 
