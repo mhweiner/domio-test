@@ -38,7 +38,7 @@ There is plenty of room for improvement in terms of performance. For example, I 
 
 In fact, it would make much more sense for the persistence to be a proper cloud-based RDBMS service such as Amazon RDS. This way the database could be shared by multiple processes as we scale up, and the database wouldn't be so tightly coupled to this service. Spin up for these processes would also be much faster, and they wouldn't have to each first re-create the same database.
 
-I believe the entire premise of polling the `propertites` service to be highly inefficient. A better approach would be a "pub-sub" model where this service subscribes to changes in price, and then we can handle each of these events as they come, passing off the grunt-work of checking against the rules to a worker pool which can be scaled dynamically depending on workload and performance metrics.
+Of course, to begin with, the entire premise of polling the `propertites` service is highly inefficient. A better approach would be a "pub-sub" model where this service itself subscribes to changes in price, and then we can handle each of these events as they come, passing off the grunt-work of checking against the rules to a worker pool which can be scaled dynamically depending on workload and performance metrics.
 
 ### Rules
 
