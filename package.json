@@ -9,7 +9,7 @@
   "devDependencies": {},
   "scripts": {
     "dev": "NODE_ENV=development node -r esm lib/server.js",
-    "poll": "NODE_ENV=development ROARR_LOG=true node -r esm lib/check.js --poll 2  | roarr pretty-print",
+    "poll": "NODE_ENV=development ROARR_LOG=true node -r esm lib/check.js --poll 5 | roarr pretty-print",
     "clean": "NODE_ENV=development ROARR_LOG=true node -r esm lib/check.js --clean | roarr pretty-print"
   },
   "dependencies": {
