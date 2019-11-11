@@ -46,7 +46,7 @@ Of course, to begin with, the entire premise of polling the `propertites` servic
 
 ### Failures
 
-I could see this service being broken down into seperate services, each service would be responsible for tracking its own tasks and re-attempting failed tasks a few times before giving up, and then raising any concerns to the authorities (on call tech staff, etc). If each "rule" was being handled by a subscriber service, then that service would be responsible for sending emails, SMS, etc. The question of what exactly to do in case of failure would depend on the business requirements and other things. More time could be spent here for sure...
+If each "rule" was being handled by a subscriber service, then that service would be responsible for sending emails, SMS, etc. Each service would be responsible for tracking its own tasks and re-attempting failed tasks a few times before giving up, and then raising any concerns to the authorities (on call tech staff, etc).  The question of what exactly to do in case of failure would depend on the business requirements, the failure, and probably other factors. The lowest hanging fruit here is the seperation of concerns and good logging. Beyond that, it's about looking at possible failure scenarios and understanding the business requirements around how to approach them.
 
 ### Rules
 
