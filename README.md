@@ -48,10 +48,6 @@ Of course, to begin with, the entire premise of polling the `propertites` servic
 
 If each "rule" was being handled by a subscriber service, then that service would be responsible for sending emails, SMS, etc. Each service would be responsible for tracking its own tasks and re-attempting failed tasks a few times before giving up, and then raising any concerns to the authorities (on call tech staff, etc).  The question of what exactly to do in case of failure would depend on the business requirements, the failure, and probably other factors. The lowest hanging fruit here is the seperation of concerns and good logging. Beyond that, it's about looking at possible failure scenarios individually and understanding the business requirements around how to approach them.
 
-### Rules
-
-Like I said before, I'd like to see a pub-sub API where other services can subscribe to events and provide their own conditional triggers. This way, we don't need to worry about emails, sms, or any other detail specific to that rule. Those services are responsible for what to do when the event is triggered, and can handle them in real-time. This is a much better way to scale things out.
-
 ## To build and run locally
 
 You'll need to have node, npm, and yarn installed. Then do:
